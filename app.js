@@ -47,7 +47,6 @@ app.post("/", function (req, res) {
 // Deleting items from database
 app.post("/delete", function (req, res) {
     var del = req.body.delete;
-    console.log(del);
     Item.deleteOne({_id:del}, function(err){
         if(err){
             console.log(err);
