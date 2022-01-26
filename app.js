@@ -1,10 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/todolistDB");
+const itemsSchema = {
+    name: String
+}
+
+const Item = mongoose.model("item", itemsSchema);
+const task=[];
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
 
     var date = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -12,11 +21,42 @@ app.get("/", function(req, res){
     var month = months[date.getMonth()];
     var day = days[date.getDay()];
     var toDate = date.getDate();
-    res.render("list", {todayMonth:month, todayDay:day, todayDate:toDate});
+    Item.find(function(err, items){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("list", { todayMonth: month, todayDay: day, todayDate: toDate, item:items });
+        }
+    })
 
 
-})
 
-app.listen(3000, function(){
+});
+
+// Adding items in the database
+
+app.post("/", function (req, res) {
+    const val = new Item({
+        name: req.body.task,
+    })
+    val.save();
+    res.redirect("/");
+});
+
+// Deleting items from database
+app.post("/delete", function (req, res) {
+    var del = req.body.delete;
+    console.log(del);
+    Item.deleteOne({_id:del}, function(err){
+        if(err){
+            console.log(err);
+        }
+    })
+    res.redirect("/");
+});
+
+// Initialising port
+app.listen(3000, function () {
     console.log("Server is running");
-})
+});
