@@ -2,12 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const aws = require("aws-sdk");
-let s3 = new aws.S3({
-    uname:process.env.S3_USERNAME,
-    password:process.env.S3_PASSWORD
-});
-console.log(s3.uname);
-mongoose.connect(`mongodb+srv://${s3.uname}:${s3.password}@cluster0.zrzyj.mongodb.net/todolistDB`);
+mongoose.connect(`mongodb+srv://${process.env.S3}:${process.env.S3}@cluster0.zrzyj.mongodb.net/todolistDB`);
 const itemsSchema = {
     name: String
 }
