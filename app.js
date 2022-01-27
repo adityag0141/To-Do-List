@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
-mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zrzyj.mongodb.net/todolistDB`);
+mongoose.connect("mongodb+srv://adityagoyal864:boOWWDHlxa7Oeh6H@cluster0.zrzyj.mongodb.net/todolistDB");
 const itemsSchema = {
     name: String
 }
