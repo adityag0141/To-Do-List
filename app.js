@@ -6,7 +6,7 @@ let s3 = new aws.S3({
     uname:process.env.S3_USERNAME,
     password:process.env.S3_PASSWORD
 });
-mongoose.connect("mongodb+srv://"+db.uname+":"+db.password+"@cluster0.zrzyj.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv://"+s3.uname+":"+s3.password+"@cluster0.zrzyj.mongodb.net/todolistDB");
 const itemsSchema = {
     name: String
 }
