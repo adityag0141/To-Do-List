@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+const dotenv = require("dotenv");
+dotenv.config();
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zrzyj.mongodb.net/todolistDB`);
 const itemsSchema = {
     name: String
 }
@@ -56,6 +58,6 @@ app.post("/delete", function (req, res) {
 });
 
 // Initialising port
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log("Server is running");
 });
