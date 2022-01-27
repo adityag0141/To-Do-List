@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
-mongoose.connect("mongodb+srv://adityagoyal864:boOWWDHlxa7Oeh6H@cluster0.zrzyj.mongodb.net/todolistDB");
+const aws = require("aws-sdk");
+let db = new aws.DB({
+    uname:process.env.DB_USERNAME,
+    password:process.env.DB_PASSWORD
+});
+mongoose.connect("mongodb+srv://"+db.uname+":"+db.password+"@cluster0.zrzyj.mongodb.net/todolistDB");
 const itemsSchema = {
     name: String
 }
