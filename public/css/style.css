@@ -18,9 +18,6 @@ p{
 .check:checked+p{
     text-decoration: line-through;
 }
-.card{
-    width: 30%;
-}
 button{
     text-align: center;
     border: none;
