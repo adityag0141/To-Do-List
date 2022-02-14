@@ -9,7 +9,7 @@ const aws = require("aws-sdk");
 
 
 app.use(session({
-    secret: "Hello",
+    secret: process.env.S3_PASS,
     resave: false,
     saveUninitialized: false
 
