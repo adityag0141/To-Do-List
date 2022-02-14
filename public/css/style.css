@@ -39,7 +39,7 @@ button{
     border: none;
     text-align: center;
 }
-.btn{
+.btn-add{
     border-radius: 90%;
     background-color: #B762C1;
     text-align: center;
@@ -47,6 +47,9 @@ button{
     font-size: x-large;
     font-weight: bolder;
 }
-.due{
-    text-align: center;
+
+.register-btn{
+    display: inline;
 }
+
+
