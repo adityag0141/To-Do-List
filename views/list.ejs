@@ -27,7 +27,6 @@
 
 <body>
     <div class="d-flex justify-content-center main-body">
-
         <div class="card">
             <div class="card-header">
                 <h2 class="heading">
@@ -46,7 +45,9 @@
                             <%= item[i].name %>
                         </p>
                         <input type="hidden" name="delete" value="<%= item[i]._id %>">
-                        <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" class="btn-dark"><i class="fas fa-trash"></i>
+
+                        </button>
                         <hr>
                     </form>
                     <% } %>
